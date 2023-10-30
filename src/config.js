@@ -19,18 +19,18 @@ const config = (app) => {
 
     app.use('/assets',express.static(__dirname + '/public'));
 
-    const store = new MongoDBStore(
-      {
-        uri: storeDB,
-        collection: 'mySessions'
-    });
+    // const store = new MongoDBStore(
+    //   {
+    //     uri: storeDB,
+    //     collection: 'mySessions'
+    // });
 
     //middleware
 	app.use(session({
         secret: '937348',
         resave: true,	  
         saveUninitialized: true,
-        store: store,
+        //store: store,
         cookie: {
             httpOnly: true, 
             maxAge: 3600000 * 24, // 24 hours
