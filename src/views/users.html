@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+  integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" 
+  integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+
+    var geocoder;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    } 
+    //Get the latitude and the longitude;
+    function successFunction(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        codeLatLng(lat, lng)
+    }
+    
+    function errorFunction(){
+        alert("Geocoder failed");
+    }
+    
+    function initMap() {
+      geocoder = new google.maps.Geocoder();  
+    }
+  
+    function codeLatLng(lat, lng) {
+  
+      var latlng = new google.maps.LatLng(lat, lng);
+      geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+        console.log(results)
+          if (results[1]) {
+          
+          
+          for (var i=0; i<results[0].address_components.length; i++) {
+              for (var b=0;b<results[0].address_components[i].types.length;b++) {
+  
+              //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                  if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+                      //this is the object you are looking for
+                      city= results[0].address_components[i];
+                      break;
+                  }
+              }
+          }
+          //city data
+          //alert(city.short_name + " " + city.long_name)
+          window.userCity = city.long_name;
+  
+  
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocoder failed due to: " + status);
+        }
+      });
+    }
+
+  </script>
+
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDxpsAs6Qrbq3ahXdnRhkPQZK0v2FMw6yI&callback=initMap"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/assets/js/custome.js"></script>
+
+</head>
+<body>
+    <div class="container-fluid" ng-controller="userCtrl">
+      <%- include('./partials/topNav') %>
+      <div class="nav-container">
+        <nav class="nav-items">
+            <div>
+              <a href="/recipes"> Recipes </a>
+            </div>
+            <div>
+              <a href="/resturants"> Resturants </a>
+            </div>
+            <div class="active">
+              <a href="/users"> Users </a>
+            </div>
+        </nav>
+      </div>   
+      
+      <div class="body-container"> 
+          <% for(var i = 0; i < users.length; i++) { %> 
+            <div class="card" ng-click="getUser('<%= users[i].name %>')">
+                <div class="card-img">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
+                </div>
+                <div class="card-info-res">
+                    <h4><%= users[i].name %></h4>
+                    <div><%= users[i].email %></div>
+                    <div><%= users[i].phone %></div>
+                </div>
+            </div>  
+          <% } %>  
+      </div>
+    </div>
+</body>
+</html>

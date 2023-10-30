@@ -1,0 +1,289 @@
+body {
+	background-color: rgb(241, 243, 244);
+	overflow-x: hidden;
+}
+
+.container-fluid {
+	padding: 0!important;
+	margin: 0!important;
+}
+
+.top-nav {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.top-nav a{
+	background-color: purple;
+	color: #fff;
+	border-radius: 10px;
+	padding: 15px 20px;
+	margin-left: 10px;
+	text-decoration: none;
+}
+
+.top-nav a:hover {
+	background-color:#eee;
+	color: #000
+}
+
+.nav-container {
+	background-color: purple;
+	padding: 20px 20px;
+}
+
+.nav-items {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nav-container div {
+	margin-left: 20px;
+	width: 10%;
+	padding: 10px 10px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	text-align: center;
+	cursor: pointer;
+}
+
+.nav-container div a {
+	color: #fff;
+	font-size: 18px;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.nav-container div:hover {
+	background-color: #eee;
+}
+
+.nav-container div:hover a {
+	color: #000;
+}
+
+.active {
+	background-color: #eee;
+}
+
+.active a {
+	color: #000!important;
+}
+
+.body-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	grid-auto-rows: minmax(100px, auto);
+	width: 85%;
+	margin: 20px auto;
+}
+
+.body-container > div {	
+	padding: 10px;
+	border: 1px solid #ccc;
+	box-shadow: 2px 3px 6px #ccc;
+	border-radius: 10px;
+}
+
+.card {
+	position: relative;
+}
+
+.card-img {
+	object-fit: cover;
+	width: 100%;
+}
+
+.card-img img {
+	width: 100%;
+	height: auto;
+	min-height: 220px;
+}
+
+.card-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.card:hover .card-info{
+	height: 200px;
+	background-color: rgba(255,255,255,0.6);
+	transition: 0.25s ease-in;
+	flex-direction: column;
+}
+
+.card-info div {
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	border: 1px solid #ccc;
+}
+
+.recipe-name {	
+	background-color: purple;
+}
+
+.recipe-prize {
+	background-color: orange;
+	font-size: 14px;
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+.cal {
+	border: none;
+	color:#000!important;
+	background-color: transparent;
+}
+
+.detail-btn {
+	display: none;
+}
+
+.card:hover .card-info > .recipe-name {
+	display: none;
+}
+
+.card:hover .card-info > .recipe-prize {
+	display: none;
+}
+
+.card:hover .card-info  > .cal {
+	display: none;
+}
+
+.card:hover .card-info > .detail-btn {
+	display: inline-block;
+	margin-top: 60px;
+}
+
+.modal-body {
+	position: relative;
+}
+
+.modal-body > div {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	border: 2px solid #000;
+}
+
+.modal-card-img {
+	object-fit: cover;
+	width: 325px;
+}
+
+.modal-card-img img {
+	width: 100%;
+	height: auto;
+}
+
+.modal-card-info {
+	padding-left: 125px;
+}
+
+.modal-price {
+	position: absolute;
+	right: 180px;
+	bottom: 50px;
+	border: none!important;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-info-res {
+	height: 200px;
+	background-color: rgba(255,255,255,0.6);
+	transition: 0.25s ease-in;
+	flex-direction: column;
+	display: flex;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.location-info {
+	width: 85%;
+	margin: 10px auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.login-container {
+	width: 40%;
+	margin: 80px auto;
+	border: 1px solid purple;
+	padding: 30px 10px;
+
+}
+
+.login-container input {
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.logo {
+	text-shadow: 1px 2px 3px gray;
+}
+
+.btn-primary {
+	background-color: purple!important;
+}
+
+.profile-container {
+	width: 50%;
+	margin: 80px auto;
+	border: 1px solid purple;
+	padding: 30px 10px;
+}
+
+.profile-container div {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+
+.profile-card-img {
+	object-fit: cover;
+	width: 325px;
+}
+
+.profile-card-img img {
+	width: 100%;
+	height: auto;
+}
+
+.details {
+	flex-direction: column;
+	justify-content: flex-start!important;
+	align-items: flex-start!important;
+}
+
+.details h5 {
+	padding-left: 10px;
+}
+
+
